@@ -1,5 +1,5 @@
 esphome:
-  name: test
+  name: ws2812
   platform: ESP32
   board: esp32dev
 
@@ -10,15 +10,38 @@ logger:
 api:
 
 ota:
-  password: "250a4827559a8445af4642d70ec24074"
+  password: "4b0490bbc9aee3eb345286ef8d5888c7"
 
 wifi:
   ssid: "MTS_GPON_8F6B"
   password: "Q3cxu4PH"
+  
+  # Optional manual IP
+  manual_ip:
+    static_ip:  192.168.1.14
+    gateway:  192.168.1.1
+    subnet: 255.255.255.0
+    # MAC: 7c:9e:bd:60:92:d4
+  reboot_timeout: 20s
+
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "Test Fallback Hotspot"
-    password: "Sk6zvGcFbAPl"
+    ssid: "Ws2812 Fallback Hotspot"
+    password: "xAbFvgZ8CIOj"
+
 
 captive_portal:
+
+
+light:
+  - platform: fastled_clockless
+    chipset: WS2812B
+    pin: GPIO23
+    num_leds: 5
+    rgb_order: GRB
+    name: "Fast led WS2812B"
+    id: led_matrix_light
+    default_transition_length: 0s
+    color_correct: [50%, 50%, 50%]
+    restore_mode: ALWAYS_ON 
