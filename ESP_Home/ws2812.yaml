@@ -1,0 +1,24 @@
+esphome:
+  name: test
+  platform: ESP32
+  board: esp32dev
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+  password: "250a4827559a8445af4642d70ec24074"
+
+wifi:
+  ssid: "MTS_GPON_8F6B"
+  password: "Q3cxu4PH"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Test Fallback Hotspot"
+    password: "Sk6zvGcFbAPl"
+
+captive_portal:
